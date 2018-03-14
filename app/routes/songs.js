@@ -4,7 +4,7 @@ import Route from '@ember/routing/route';
 let Song = EmberObject.extend({
   title: '',
   band: '',
-  rating: ''
+  rating: 0
 });
 
 export default Route.extend({
