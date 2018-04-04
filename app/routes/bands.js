@@ -48,5 +48,11 @@ export default Route.extend({
     });
 
     return A([ledZeppelin, pearlJam, fooFighters]);
+  },
+
+  actions: {
+    didTransition() {
+      document.title = 'Bands - Rock & Roll';
+    }
   }
 });
