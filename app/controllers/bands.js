@@ -1,5 +1,4 @@
 import Controller from '@ember/controller';
-import Band from 'rock-and-roll/models/band';
 
 import { empty } from '@ember/object/computed';
 
@@ -18,10 +17,10 @@ export default Controller.extend({
       this.set('isAddingBand', false);
     },
 
-    saveBand(event) {
+    async saveBand(event) {
       event.preventDefault();
-      let newBand = Band.create({ name: this.get('newBandName')});
-      this.get('model').pushObject(newBand);
+      let newBand = this.get('store').createRecord('band', { name: this.get('newBandName') });
+      await newBand.save();
       this.setProperties({
         newBandName: '',
         isAddingBand: false

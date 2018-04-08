@@ -10,5 +10,12 @@ export default Route.extend({
       let band = this.modelFor('bands.band');
       document.title = `${band.get('name')} songs - Rock & Roll`;
     }
+  },
+
+  resetController(controller) {
+    controller.setProperties({
+      isAddingSong: false,
+      newSongTitle: ''
+    })
   }
 });
