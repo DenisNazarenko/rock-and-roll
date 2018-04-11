@@ -1,7 +1,17 @@
+import { Promise as EmberPromise } from 'rsvp';
 import Route from '@ember/routing/route';
 
+function wait(delay) {
+  return new EmberPromise(function(resolve) {
+    setTimeout(function() {
+      resolve();
+    }, delay);
+  });
+}
+
 export default Route.extend({
-  model() {
+  async model() {
+    await wait(3000);
     return this.store.findAll('band');
   },
 
