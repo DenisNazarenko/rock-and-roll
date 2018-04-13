@@ -1,19 +1,19 @@
 <ul class="rr-list">
   {{#each model.songs as |song|}}
     <li class="rr-list-item">
-      {{song.title}}
+      {{capitalize song.title}}
       {{star-rating class='fr' rating=song.rating item=song onClick=(action 'updateRating' song)}}
     </li>
     {{else}}
       <li class="rr-empty-message">
-        No {{model.name}} songs yet.
+        No {{capitalize model.name}} songs yet.
       </li>
   {{/each}}
 </ul>
 <div class="rr-new-label">
   {{#if isAddingSong}}
     <form class="rr-inline-form" onsubmit={{action "saveSong"}}>
-      {{input type="text" class="rr-input" value=newSongTitle placeholder="New song"}}
+      {{input type="text" class="rr-input" value=newSongTitle placeholder=newSongPlaceholder}}
       <div class="rr-inline-form-group ml-auto">
         <button type="submit" class="rr-action-button" disabled={{isAddButtonDisabled}}>Add</button>
         <span class="rr-cancel-icon" onclick={{action "cancelAddSong"}}>{{fa-icon "times"}}</span>

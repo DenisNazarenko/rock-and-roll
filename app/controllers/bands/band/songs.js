@@ -1,5 +1,6 @@
 import Controller from '@ember/controller';
-
+import { capitalize } from 'rock-and-roll/helpers/capitalize';
+import { computed } from '@ember/object';
 import { empty } from '@ember/object/computed';
 
 export default Controller.extend({
@@ -7,6 +8,11 @@ export default Controller.extend({
   newSongTitle: '',
 
   isAddButtonDisabled: empty('newSongTitle'),
+
+  newSongPlaceholder: computed('model.name', function() {
+    let bandName = this.get('model.name');
+    return `New ${capitalize(bandName)} song`;
+  }),
 
   actions: {
     addSong() {
